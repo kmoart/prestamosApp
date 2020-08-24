@@ -1,0 +1,85 @@
+<h1>Listado de Prestamos</h1>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <h2>Base del banco: </h2>
+    <h4>${{capitalBaseS}}</h4>
+  </div>
+    <div class="col text-right">
+        <button routerLink="/usuario/nuevo" 
+            class="btn btn-primary">
+            <i class="fa fa-plus"></i>
+            Nueva Solicitud
+        </button>
+    </div>
+
+    
+</div>
+
+<table  *ngIf="!cargando && prestamos.length > 0" 
+      class="table mt-3 animated fadeIn faster">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Cédula</th>
+        <th scope="col">Valor Solicitado</th>
+        <th scope="col">Estado del Crédito</th>
+        <th scope="col">Pagó Crédito ?</th>
+        <th scope="col">Tools</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of prestamos; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.correo }}</td>
+        <td>{{ usuario.cedula }}</td>
+        <td>{{ usuario.valorSolicitado }}</td>
+        <td>
+
+          <label *ngIf="usuario.estadoCredito" class="badge badge-success">Aceptado</label>
+          <label *ngIf="!usuario.estadoCredito" class="badge badge-danger">Rechazado</label>
+        </td>
+        <td>
+          <label *ngIf="usuario.pagoCredito" class="badge badge-success">Si</label>
+          <label *ngIf="!usuario.pagoCredito" class="badge badge-danger">No</label>
+
+        </td>
+        <td>
+          <button *ngIf="usuario.estadoCredito" class="btn btn-info mr-1"
+                  [routerLink]="['/usuario',usuario.id]">
+                  <i class="fa fa-plus"></i>
+                  Solicitar Otro Crédito
+          </button>
+
+          <button class="btn btn-danger"
+              (click)="borrarUsuario( usuario, i )">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+  <div *ngIf="!cargando && prestamos.length ===0" 
+    class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+        <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+  </div>
+
+  <div *ngIf="cargando" 
+  class="alert alert-info text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">Cargando...</h4>
+    <p>
+        <i class="fa fa-refresh fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>
+  </div>

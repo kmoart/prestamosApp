@@ -3,6 +3,7 @@ import { PrestamosService } from 'src/app/services/prestamos.service';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import Swal from 'sweetalert2';
 import { GlobalConstants } from 'src/app/common/global-constants';
+import { Observable, from } from 'rxjs';
 
 
 @Component({
@@ -48,7 +49,22 @@ export class PrestamosComponent implements OnInit {
       }
     });
 
-    
+  }
+
+  pagarPrestamo( usuario: UsuarioModel){
+      usuario.pagoCredito = true;
+      let bancoBase = Number(localStorage.getItem('capitalBase'));
+      bancoBase = bancoBase + usuario.valorSolicitado;
+      localStorage.setItem('capitalBase',bancoBase.toString() );
+      this.capitalBaseS = localStorage.getItem('capitalBase');
+
+      let peticion: Observable<any>;
+
+      peticion = this.prestamosService.actualizarUsuario( usuario );
+
+      peticion.subscribe( resp =>{
+        Swal.fire(usuario.nombre, 'Se actualizó correctamente', 'success');
+      });
 
   }
 

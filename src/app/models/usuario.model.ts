@@ -20,20 +20,8 @@ export class UsuarioModel{
         else{
             this.estadoCredito = false;
         }
-
-        const numero2 = Math.random();
-        if(this.estadoCredito==false){
-            this.pagoCredito = false;
-            
-        }else{
-
-            if( numero2 >= 0.5){
-                this.pagoCredito = true;
-            }
-
-            else{
-                this.pagoCredito= false;
-            }
-        }
+    
+        this.pagoCredito= false;            
+        
     }
 }

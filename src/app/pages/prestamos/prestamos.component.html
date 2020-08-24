@@ -46,13 +46,18 @@
         <td>
           <label *ngIf="usuario.pagoCredito" class="badge badge-success">Si</label>
           <label *ngIf="!usuario.pagoCredito" class="badge badge-danger">No</label>
-
+          
+          <button *ngIf="!usuario.pagoCredito && usuario.estadoCredito" class="btn btn-success"
+              (click)="pagarPrestamo( usuario)">
+            <i class="fa fa-money"></i>
+            Pagar
+          </button>
         </td>
         <td>
-          <button *ngIf="usuario.estadoCredito" class="btn btn-info mr-1"
+          <button *ngIf="usuario.estadoCredito && usuario.pagoCredito" class="btn btn-info mr-1"
                   [routerLink]="['/usuario',usuario.id]">
                   <i class="fa fa-plus"></i>
-                  Solicitar Otro Crédito
+                  Solicitar Crédito
           </button>
 
           <button class="btn btn-danger"

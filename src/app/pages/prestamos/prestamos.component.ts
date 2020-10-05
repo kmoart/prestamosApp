@@ -37,7 +37,7 @@ export class PrestamosComponent implements OnInit {
 
   borrarUsuario( usuario: UsuarioModel, i: number ){
 
-    Swal.fire('¿Está seguro?', `Está seguro que desea eliminar a ${ usuario.nombre }`, 'question')
+    Swal.fire('¿Are you sure?', `Are you sure to eliminate ${ usuario.nombre }`, 'question')
     .then( resp => {
 
       if( resp.value){
@@ -63,7 +63,7 @@ export class PrestamosComponent implements OnInit {
       peticion = this.prestamosService.actualizarUsuario( usuario );
 
       peticion.subscribe( resp =>{
-        Swal.fire(usuario.nombre, 'Se actualizó correctamente', 'success');
+        Swal.fire(usuario.nombre, 'was updated successfully ', 'success');
       });
 
   }

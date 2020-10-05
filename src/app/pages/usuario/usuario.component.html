@@ -1,4 +1,4 @@
-<h1>Usuario <small>Prestamos</small></h1>
+<h1>User <small>Loans</small></h1>
 <hr>
 
 <div class="row text-right">
@@ -6,7 +6,7 @@
         <button class="btn btn-danger"
                 routerLink="/prestamos">
             <i class="fa fa-arrow-left"></i>
-            Regresar
+            Return to List of Loans
         </button>
     </div>
 </div>
@@ -23,24 +23,24 @@
                         [(ngModel)]="usuario.id"
                         name="id"
                         disabled="disabled">
-                <small class="form-text text-muted">Este campo es autogenerado</small>
+                <small class="form-text text-muted">This field is self-generated</small>
             </div>
 
             <div class="form-group">
-                <label>Nombre</label>
+                <label>Name:</label>
                 <input type="text"
                         class="form-control"
-                        placeholder="Nombre del usuario"
+                        placeholder="Username"
                         [(ngModel)]="usuario.nombre"
                         name="nombre"
                         required>
             </div>
 
             <div class="form-group">
-                <label>Correo</label>
+                <label>E-mail</label>
                 <input type="email"
                         class="form-control"
-                        placeholder="e-mail del usuario"
+                        placeholder="User e-mail"
                         [(ngModel)]="usuario.correo"
                         name="correo"
                         required>
@@ -48,26 +48,25 @@
 
 
             <div class="form-group">
-                <label >Cédula</label>
+                <label >ID</label>
                 <input type="text" 
                        class="form-control"
-                        placeholder="Cédula del usuario"
-                        placeholder="Cédula del usuario"
+                        placeholder="User ID"
                         [(ngModel)]="usuario.cedula"
                         name="cedula"
                         required>
             </div>
 
             <div class="form-group">
-                <label>Valor solicitado</label>
+                <label>Reuested Value</label>
                 <input type="number"
                         class="form-control"
-                        placeholder="Valor solicitado"
+                        placeholder="Requested Value"
                         [(ngModel)]="usuario.valorSolicitado"
                         name="valor"
                         required>
-                        <small *ngIf="!valorAceptado" class="form-text text-muted">El valor solicitado debe ser entre $10.000 y $100.000</small>
-                        <small *ngIf="valorExcedebase" class="form-text text-muted">El valor solicitado excede del valor total de base del banco $ </small><h4 *ngIf="valorExcedebase">{{capitalBasenumber}}</h4>
+                        <small *ngIf="!valorAceptado" class="form-text text-muted">The requested value must be between $ 10,000 and $ 100,000</small>
+                        <small *ngIf="valorExcedebase" class="form-text text-muted">The requested value exceeds the bank's total base value $ </small><h4 *ngIf="valorExcedebase">{{capitalBasenumber}}</h4>
             </div>
             <!--
             <div class="form-group">
@@ -104,7 +103,7 @@
                 <button type="submit"
                         class="btn btn-primary w-25">
                     <i class="fa fa-save"></i>
-                    Guardar
+                    Save
                 </button>
             </div>
 

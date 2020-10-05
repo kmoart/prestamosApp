@@ -1,20 +1,18 @@
-<h1>Listado de Prestamos</h1>
+<h1>List of Loans</h1>
 <hr>
 
 <div class="row">
   <div class="col">
-    <h2>Base del banco: </h2>
+    <h2>Bank base: </h2>
     <h4>${{capitalBaseS}}</h4>
   </div>
     <div class="col text-right">
         <button routerLink="/usuario/nuevo" 
             class="btn btn-primary">
             <i class="fa fa-plus"></i>
-            Nueva Solicitud
+            New request
         </button>
-    </div>
-
-    
+    </div>    
 </div>
 
 <table  *ngIf="!cargando && prestamos.length > 0" 
@@ -22,12 +20,12 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Correo</th>
-        <th scope="col">Cédula</th>
-        <th scope="col">Valor Solicitado</th>
-        <th scope="col">Estado del Crédito</th>
-        <th scope="col">Pagó Crédito ?</th>
+        <th scope="col">Name</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">ID</th>
+        <th scope="col">Request Value</th>
+        <th scope="col">Credit Status</th>
+        <th scope="col">The credit was paid ?</th>
         <th scope="col">Tools</th>
       </tr>
     </thead>

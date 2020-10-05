@@ -66,13 +66,14 @@ export class UsuarioComponent implements OnInit {
     }
 
     
-    Swal.fire('Espere', 'Guardando información', 'info');
+    Swal.fire('Please wait...', 'Saving information', 'info');
     Swal.showLoading();
 
      
     let peticion: Observable<any>;
 
     if( this.usuario.id){
+      this.usuario.pagoCredito = false;
       peticion = this.prestamosService.actualizarUsuario( this.usuario );
 
       if(this.usuario.estadoCredito){
@@ -101,7 +102,7 @@ export class UsuarioComponent implements OnInit {
     }
 
     peticion.subscribe( resp =>{
-        Swal.fire(this.usuario.nombre, 'Se actualizó correctamente', 'success');
+        Swal.fire(this.usuario.nombre, 'was successfully updated', 'success');
     });
 
   }
